@@ -37,7 +37,7 @@ This plugin is essentially a filter and works on any [valid URL string](https://
 {% assign meta = "https://wikipedia.org" | metadata %}
 ```
 
-The `metadata` filter extracts the meta data from the given url string.
+The `metadata` filter extracts the meta data from the given url string and returns the data as a `Hash`.
 
 These are the values that are extracted:
 
@@ -47,7 +47,7 @@ These are the values that are extracted:
 
 The expected output for `{{ meta }}` from the above example would be:
 
-```json
+```ruby
 {
   "title" => "Wikipedia",
   "charset" => "utf-8",
@@ -59,6 +59,28 @@ The expected output for `{{ meta }}` from the above example would be:
   "preconnect" => "//upload.wikimedia.org"
 }
 ```
+
+### Connection time-outs
+
+By default, the connection request to the specified domain closes after about `1` second if there is an error.
+
+To override the default behavior, add this block to the `_config.yml` file:
+
+```yml
+url_metadata:
+  open_timeout: 5 # timeout after 5 second if connection doesn't open
+  read_timeout: 3 # timeout after 3 second if there's no data returned
+```
+
+> **Note**: You may use any number for the timeout seconds, but generally a number less than `10` is ideal for better performance because the processing of the static pages is blocked until some data is returned from a website.
+
+### Caching
+
+Once the initial data is returned from the website, the extracted parameters are stored in the `.jekyll-cache` folder under `Jekyll--URLMetadata` plugin cache folder.
+
+The cache improves subsequent build times in the local development environment.
+
+If you wish to purge the cache, simple delete the `Jekyll--URLMetadata` folder and the plugin will re-generate the cache in the next run.
 
 ## Use cases
 
