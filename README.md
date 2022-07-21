@@ -47,7 +47,7 @@ These are the values that are extracted:
 
 The expected output for `{{ meta }}` from the above example would be:
 
-```
+```json
 {
   "title" => "Wikipedia",
   "charset" => "utf-8",
