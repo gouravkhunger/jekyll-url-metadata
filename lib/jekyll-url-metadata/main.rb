@@ -56,9 +56,9 @@ module Jekyll
 
       hash = Hash.new
 
-      # add <title> tag's value to the hash
-      doc.search("title").each do | title |
-        next if title.content == ""
+      # add first <title> tag's value to the hash
+      doc.search("head title").each do | title |
+        break if exists(hash["title"])
         hash["title"] = title.content
       end
 
