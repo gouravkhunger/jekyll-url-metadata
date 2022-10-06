@@ -24,5 +24,6 @@ Gem::Specification.new do |spec|
   # Dependencies
   spec.add_runtime_dependency "jekyll", ">= 3.0.0"
   spec.add_runtime_dependency "nokogiri", ">= 1.10.0"
+  spec.add_development_dependency "rake", "~> 13.0"
   spec.add_development_dependency "minitest", "~> 5.14"
 end
