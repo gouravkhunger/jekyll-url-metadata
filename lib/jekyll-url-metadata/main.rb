@@ -34,7 +34,7 @@ module Jekyll
           :read_timeout => url_config["read_timeout"].nil? ? 1 : url_config["read_timeout"]
         }))
       rescue
-        log("Failed to parse HTML from #{input}. Please double check for URL validity.") if !testCase
+        log("Failed to parse HTML from '#{input}'. Please double check for URL validity.") if !testCase
         return
       end
 
@@ -72,7 +72,7 @@ module Jekyll
 
     def is_input_valid(input, testCase = false)
       if !input.is_a?(String)
-        log("Expected input type \"String\". Got \"#{input.class}\".") if !testCase
+        log("Expected input type 'String'. Got '#{input.class}'.") if !testCase
 
         return false
       end
@@ -98,13 +98,13 @@ module Jekyll
 
     def is_config_valid()
       if !url_config["open_timeout"].nil? && !url_config["open_timeout"].is_a?(Integer)
-        log("Expected an 'Integer' value for config 'open_timeout'. Got #{url_config["open_timeout"].class}.")
+        log("Expected an 'Integer' value for config 'open_timeout'. Got '#{url_config["open_timeout"].class}'.")
 
         return false
       end
 
       if !url_config["read_timeout"].nil? && !url_config["read_timeout"].is_a?(Integer)
-        log("Expected an 'Integer' value for config 'read_timeout'. Got #{url_config["read_timeout"].class}.")
+        log("Expected an 'Integer' value for config 'read_timeout'. Got '#{url_config["read_timeout"].class}'.")
 
         return false
       end
