@@ -1,0 +1,35 @@
+title: URL Metadata Plugin Example
+description: >-
+  This is an example Jekyll site to showcase how to extract meta data information from urls and expose them to liquid variables.
+url: "https://url-metadata.gouravkhunger.me"
+baseurl: ""
+
+author:
+  name: Gourav Khunger
+  email: gouravkhunger18[at]gmail.com
+
+theme: minima
+
+minima:
+  social_links:
+    - { platform: github,  user_url: "https://link.gouravkhunger.me/github" }
+    - { platform: youtube, user_url: "https://link.gouravkhunger.me/youtube" }
+    - { platform: twitter, user_url: "https://link.gouravkhunger.me/twitter" }
+    - { platform: stackoverflow, user_url: "https://link.gouravkhunger.me/stackoverflow" }
+
+plugins:
+  - jekyll-url-metadata
+
+exclude:
+  - .sass-cache/
+  - .jekyll-cache/
+  - gemfiles/
+  - Gemfile
+  - Gemfile.lock
+  - node_modules/
+  - vendor/bundle/
+  - vendor/cache/
+  - vendor/gems/
+  - vendor/ruby/
+  - LICENSE
+  - README.md

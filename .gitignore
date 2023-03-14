@@ -10,6 +10,10 @@
 /test/version_tmp/
 /tmp/
 
+_site
+Gemfile.lock
+.jekyll-cache
+
 # Used by dotenv library to load environment variables.
 # .env
 
