@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>URL Metadata Plugin Example | This is an example Jekyll site to showcase how to extract meta data information from urls and expose them to liquid variables.</title>
+<meta name="generator" content="Jekyll v4.3.2" />
+<meta property="og:title" content="URL Metadata Plugin Example" />
+<meta name="author" content="Gourav Khunger" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="This is an example Jekyll site to showcase how to extract meta data information from urls and expose them to liquid variables." />
+<meta property="og:description" content="This is an example Jekyll site to showcase how to extract meta data information from urls and expose them to liquid variables." />
+<link rel="canonical" href="https://url-metadata.gouravkhunger.me/" />
+<meta property="og:url" content="https://url-metadata.gouravkhunger.me/" />
+<meta property="og:site_name" content="URL Metadata Plugin Example" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="URL Metadata Plugin Example" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebSite","author":{"@type":"Person","name":"Gourav Khunger"},"description":"This is an example Jekyll site to showcase how to extract meta data information from urls and expose them to liquid variables.","headline":"URL Metadata Plugin Example","name":"URL Metadata Plugin Example","url":"https://url-metadata.gouravkhunger.me/"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="https://url-metadata.gouravkhunger.me/feed.xml" title="URL Metadata Plugin Example" />
+</head>
+<body><header class="site-header">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/">URL Metadata Plugin Example</a></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <h1 id="jekyllurlmetadata">Jekyll::URLMetadata</h1>
+
+<p>A jekyll plugin to extract meta information from urls and expose them to liquid variables.</p>
+
+<p>This gem was originally authored to be used as a custom plugin for the <a href="https://github.com/genicsblog/genicsblog.com">static site</a> of <a href="https://genicsblog.com">genicsblog.com</a>.</p>
+
+<h2 id="installation">Installation</h2>
+
+<p>Add this line to your application’s Gemfile inside the <code class="language-plaintext highlighter-rouge">jekyll_plugins</code> group:</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">group</span> <span class="ss">:jekyll_plugins</span> <span class="k">do</span>
+    <span class="c1"># other gems</span>
+    <span class="n">gem</span> <span class="s2">"jekyll-url-metadata"</span>
+<span class="k">end</span>
+</code></pre></div></div>
+
+<p>Then, enable the plugin by adding it to the <code class="language-plaintext highlighter-rouge">plugins</code> section in the <code class="language-plaintext highlighter-rouge">_config.yml</code> file:</p>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">plugins</span><span class="pi">:</span>
+    <span class="c1"># - other plugins</span>
+    <span class="pi">-</span> <span class="s">jekyll-url-metadata</span>
+</code></pre></div></div>
+
+<p>And then execute:</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>bundle <span class="nb">install</span>
+</code></pre></div></div>
+
+<h2 id="usage">Usage</h2>
+
+<p>This plugin is essentially a filter that works on any <a href="https://en.wikipedia.org/wiki/URL#Syntax">valid URL string</a> provided inside a liquid tag. Use it as below:</p>
+
+<div class="language-liquid highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{%</span><span class="w"> </span><span class="nt">assign</span><span class="w"> </span><span class="nv">meta</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"https://wikipedia.org"</span><span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="nf">metadata</span><span class="w"> </span><span class="p">%}</span>
+</code></pre></div></div>
+
+<p>The <code class="language-plaintext highlighter-rouge">metadata</code> filter extracts the meta data from the given url string and returns the data as a <code class="language-plaintext highlighter-rouge">Hash</code>.</p>
+
+<p>These are the values that are extracted:</p>
+
+<ul>
+  <li>The <code class="language-plaintext highlighter-rouge">&lt;title&gt;</code> tag.</li>
+  <li>The <code class="language-plaintext highlighter-rouge">&lt;meta&gt;</code> tags that have a <code class="language-plaintext highlighter-rouge">name</code>, <code class="language-plaintext highlighter-rouge">property</code> or <code class="language-plaintext highlighter-rouge">charset</code> fields.</li>
+  <li>The <code class="language-plaintext highlighter-rouge">&lt;link&gt;</code> tags with a <code class="language-plaintext highlighter-rouge">rel</code> attribute.</li>
+</ul>
+
+<p>The expected output for <code class="language-plaintext highlighter-rouge">{{ meta }}</code> from the above example would be:</p>
+
+<div class="language-liquid highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{{</span><span class="w"> </span><span class="nv">meta</span><span class="w"> </span><span class="p">}}</span>
+
+{"title"=&gt;"Wikipedia", "charset"=&gt;"utf-8", "description"=&gt;"Wikipedia is a free online encyclopedia, created and edited by volunteers around the world and hosted by the Wikimedia Foundation.", "viewport"=&gt;"initial-scale=1,user-scalable=yes", "apple-touch-icon"=&gt;"/static/apple-touch/wikipedia.png", "shortcut icon"=&gt;"/static/favicon/wikipedia.ico", "license"=&gt;"//creativecommons.org/licenses/by-sa/3.0/", "preconnect"=&gt;"//upload.wikimedia.org"}
+</code></pre></div></div>
+
+<p>Let us extract the <code class="language-plaintext highlighter-rouge">og:image</code> from the metadata of the article <a href="https://genicsblog.com/gouravkhunger/pagination-in-android-room-database-using-the-paging-3-library">Pagination in Android Room Database</a> at Genics Blog. The following snippet does the same:</p>
+
+<div class="language-liquid highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{%</span><span class="w"> </span><span class="nt">assign</span><span class="w"> </span><span class="nv">article_meta</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"https://genicsblog.com/gouravkhunger/pagination-in-android-room-database-using-the-paging-3-library"</span><span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="nf">metadata</span><span class="w"> </span><span class="p">%}</span>
+
+<span class="p">{{</span><span class="w"> </span><span class="nv">article_meta</span><span class="p">[</span><span class="s1">'og:image'</span><span class="p">]</span><span class="w"> </span><span class="p">}}</span>
+</code></pre></div></div>
+
+<p>The output of the above code will be as follows:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>https://user-images.githubusercontent.com/46792249/164977196-3de454f4-8a7e-4feb-9d1b-cfd6ea53ba03.jpg
+</code></pre></div></div>
+
+<p>Thus, it can be used to generate link previews at build time. The <a href="https://github.com/genicsblog/theme-files/blob/main/_includes/linkpreview.html"><code class="language-plaintext highlighter-rouge">linkpreview.html</code></a> implementation at Genics Blog presents how to use the plugin to generate url cards in a production Jekyll blog.</p>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/"></data>
+
+  <div class="wrapper">
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col">
+        <ul class="contact-list">
+          <li class="p-name"><a href="https://gouravkhunger.me" target="_blank">Gourav Khunger</a></li>
+          <li>gouravkhunger18[at]gmail.com</li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <p>This is an example Jekyll site to showcase how to extract meta data information from urls and expose them to liquid variables.</p>
+      </div>
+    </div>
+
+    <div class="social-links"><ul class="social-media-list"><li>
+  <a rel="me" href="https://link.gouravkhunger.me/github" target="_blank" title="github">
+    <svg class="svg-icon grey">
+      <use xlink:href="/assets/minima-social-icons.svg#github"></use>
+    </svg>
+  </a>
+</li>
+<li>
+  <a rel="me" href="https://link.gouravkhunger.me/youtube" target="_blank" title="youtube">
+    <svg class="svg-icon grey">
+      <use xlink:href="/assets/minima-social-icons.svg#youtube"></use>
+    </svg>
+  </a>
+</li>
+<li>
+  <a rel="me" href="https://link.gouravkhunger.me/twitter" target="_blank" title="twitter">
+    <svg class="svg-icon grey">
+      <use xlink:href="/assets/minima-social-icons.svg#twitter"></use>
+    </svg>
+  </a>
+</li>
+<li>
+  <a rel="me" href="https://link.gouravkhunger.me/stackoverflow" target="_blank" title="stackoverflow">
+    <svg class="svg-icon grey">
+      <use xlink:href="/assets/minima-social-icons.svg#stackoverflow"></use>
+    </svg>
+  </a>
+</li>
+</ul>
+</div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>
