@@ -16,7 +16,7 @@ class InputValidatorTests
     end
 
     it "should accept valid url strings" do
-      assert_equal true, is_input_valid("https://gouravkhunger.me", testCase = true)
+      assert_equal true, is_input_valid("https://gourav.sh", testCase = true)
     end
 
     it "should reject non-url strings" do

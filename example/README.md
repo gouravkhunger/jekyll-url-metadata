@@ -2,7 +2,7 @@ This is an example Jekyll site to showcase how to extract meta data information 
 
 ### Set up
 
-You can preview this example [here](https://url-metadata.gouravkhunger.me) or set it up locally:
+You can preview this example [here](https://url-metadata.gourav.sh) or set it up locally:
 
 ```
 git clone https://github.com/gouravkhunger/jekyll-url-metadata
