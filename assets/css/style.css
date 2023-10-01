@@ -368,7 +368,7 @@ pre > code {
 }
 @media screen and (min-width: 800px) {
   .wrapper {
-    max-width: calc(800px - (30px * 2));
+    max-width: calc(800px - 30px * 2);
     padding-right: 30px;
     padding-left: 30px;
   }
@@ -573,22 +573,22 @@ table td {
 
 .footer-col-1,
 .footer-col-2 {
-  width: calc(50% - (30px / 2));
+  width: calc(50% - 30px / 2);
 }
 
 .footer-col-3 {
-  width: calc(100% - (30px / 2));
+  width: calc(100% - 30px / 2);
 }
 
 @media screen and (min-width: 800px) {
   .footer-col-1 {
-    width: calc(35% - (30px / 2));
+    width: calc(35% - 30px / 2);
   }
   .footer-col-2 {
-    width: calc(20% - (30px / 2));
+    width: calc(20% - 30px / 2);
   }
   .footer-col-3 {
-    width: calc(45% - (30px / 2));
+    width: calc(45% - 30px / 2);
   }
 }
 @media screen and (min-width: 600px) {
@@ -596,7 +596,7 @@ table td {
     display: flex;
   }
   .footer-col {
-    width: calc(100% - (30px / 2));
+    width: calc(100% - 30px / 2);
     padding: 0 15px;
   }
   .footer-col:first-child {
@@ -740,7 +740,7 @@ table td {
  */
 @media screen and (min-width: 800px) {
   .one-half {
-    width: calc(50% - (30px / 2));
+    width: calc(50% - 30px / 2);
   }
 }
 
