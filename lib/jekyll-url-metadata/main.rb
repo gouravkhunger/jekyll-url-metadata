@@ -20,8 +20,12 @@ module Jekyll
     def metadata(input)
       return if !is_input_valid(input) || !is_config_valid()
 
-      # The getset() API implements a cache first strategy
-      cache.getset(input) do
+      if Jekyll::VERSION.to_i >= 4
+        # The getset() API implements a cache first strategy
+        cache.getset(input) do
+          generate_hashmap(input)
+        end
+      else
         generate_hashmap(input)
       end
     end
