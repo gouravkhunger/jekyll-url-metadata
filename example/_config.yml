@@ -33,3 +33,7 @@ exclude:
   - vendor/ruby/
   - LICENSE
   - README.md
+
+link_preview:
+  title_max_characters: 64
+  description_max_characters: 128

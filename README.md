@@ -87,6 +87,9 @@ If you wish to purge the cache, simple delete the `Jekyll--URLMetadata` folder a
 - Creating beautiful social previews for links by fetching meta data for URLs at build time.
 - Determining meta data from a website at jekyll build time to evaluate and perform certain action.
 
+See also the [example website](https://url-metadata.gourav.sh/) and
+[its source code](https://github.com/gouravkhunger/jekyll-url-metadata/tree/main/example).
+
 ## License
 
 The gem is available as open source under the terms of the [MIT License](https://github.com/gouravkhunger/jekyll-url-metadata/blob/main/LICENSE).

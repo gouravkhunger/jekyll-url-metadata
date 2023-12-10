@@ -1,0 +1,15 @@
+{% comment %}See https://talk.jekyllrb.com/t/embedding-opengraph-links-in-posts/8124/6{% endcomment %}
+{% assign link_preview_meta = include.url | metadata %}
+<div class="link-preview-box">
+<a href="{{ include.url }}" title="{{ link_preview_meta['title'] | escape }}">
+  {% if link_preview_meta['og:image'] and link_preview_meta['og:image'] != blank %}
+  <img src="{{ link_preview_meta['og:image'] }}" alt="{{ link_preview_meta['title'] | escape }}">
+  {% else %}
+  {% comment %}Add a fallback image here, if the opengraph image for given url does not exist. See https://upload.wikimedia.org/wikipedia/commons/f/f5/Antu_edit-image-face-recognize.svg Elegant Alternative Suite for Plasma 5. Antü Plasma-KDE Theme are licensed under the CREATIVE COMMONS BY-SA 3.0.{% endcomment %}
+  <img src="/assets/open_graph_default_img.svg" alt="{{ link_preview_meta['title'] | escape }}">
+  {% endif %}
+
+  <p class="link-preview-title">{{ link_preview_meta['title'] | truncate: site.link_preview.title_max_characters | escape }}</p>
+  <p class="link-preview-description">{{ link_preview_meta['og:description'] | truncate: site.link_preview.description_max_characters | escape }}</p>
+</a>
+</div>
