@@ -72,3 +72,33 @@ The output of the above code will be as follows:
 ```
 
 Thus, it can be used to generate link previews at build time. The [`linkpreview.html`](https://github.com/genicsblog/theme-files/blob/main/_includes/linkpreview.html) implementation at Genics Blog presents how to use the plugin to generate url cards in a production Jekyll blog.
+
+### Simple link preview example
+
+This is a link preview generated with this Jekyll package and some custom CSS.
+
+{% include link_preview.html url="https://genicsblog.com/gouravkhunger/pagination-in-android-room-database-using-the-paging-3-library" %}
+
+You need to create an include file called
+[`_include/link_preview.html`](https://github.com/gouravkhunger/jekyll-url-metadata/blob/main/example/_includes/link_preview.html)
+
+You also need to add some CSS. Using this website as example, you need to
+extend the minima theme. All you need to do is to create a file called
+[`_sass/minima/custom-styles.scss`](https://github.com/gouravkhunger/jekyll-url-metadata/blob/main/example/_sass/minima/custom-styles.scss). If you use other Jekyll themes you must follow their documentation.
+
+Finally you need to add a couple of variables in the `_config.yml` file. These
+are required and will truncate the title and the description to the desired
+number of characters.
+
+```yaml
+link_preview:
+  title_max_characters: 64
+  description_max_characters: 128
+```
+
+To use this example you just need to include the `link_preview.html` file with
+a `url` parameter, like this:
+
+```liquid
+{% raw %}{% include link_preview.html url="https://genicsblog.com/gouravkhunger/pagination-in-android-room-database-using-the-paging-3-library" %}{% endraw %}
+```

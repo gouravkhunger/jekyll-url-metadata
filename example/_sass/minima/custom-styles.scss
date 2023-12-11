@@ -1,0 +1,47 @@
+/* Link preview.
+ * Extends the basic minima theme as described here:
+ * https://github.com/jekyll/minima#customizing-templates
+ */
+.link-preview-box {
+    width: 100%;
+    border: none;
+    padding: 0px;
+    margin-top: 8px;
+    margin-bottom: 8px;
+}
+
+.link-preview-box a {
+    font-family: sans-serif;
+    border-radius: 4px;
+    color: black;
+    text-decoration: none;
+    background-color: #dddddd;
+    padding: 8px;
+    display: block;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+}
+
+.link-preview-box a:hover {
+    background-color: #555;
+    color: white;
+}
+
+.link-preview-box img {
+    width: auto;
+    height: auto;
+    max-width: 512px;
+    max-height: 64px;
+}
+
+.link-preview-title {
+    font-size: 18px;
+    margin: 8px 0 12px 0;
+}
+
+.link-preview-description {
+    font-size: 14px;
+    margin: 0;
+}
