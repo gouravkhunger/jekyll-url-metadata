@@ -93,6 +93,43 @@
 
 <p>Thus, it can be used to generate link previews at build time. The <a href="https://github.com/genicsblog/theme-files/blob/main/_includes/linkpreview.html"><code class="language-plaintext highlighter-rouge">linkpreview.html</code></a> implementation at Genics Blog presents how to use the plugin to generate url cards in a production Jekyll blog.</p>
 
+<h3 id="simple-link-preview-example">Simple link preview example</h3>
+
+<p>This is a link preview generated with this Jekyll package and some custom CSS.</p>
+
+<div class="link-preview-box">
+<a href="https://genicsblog.com/gouravkhunger/pagination-in-android-room-database-using-the-paging-3-library" title="Pagination in Android Room Database using the Paging 3 Library">
+  
+  <img src="https://user-images.githubusercontent.com/46792249/164977196-3de454f4-8a7e-4feb-9d1b-cfd6ea53ba03.jpg" alt="Pagination in Android Room Database using the Paging 3 Library" />
+  
+
+  <p class="link-preview-title">Pagination in Android Room Database using the Paging 3 Library</p>
+  <p class="link-preview-description">The complete guide to paginating *just* a room database (without Network level pagination) with the Paging 3 library in Andro...</p>
+</a>
+</div>
+
+<p>You need to create an include file called
+<a href="https://github.com/gouravkhunger/jekyll-url-metadata/blob/main/example/_includes/link_preview.html"><code class="language-plaintext highlighter-rouge">_include/link_preview.html</code></a></p>
+
+<p>You also need to add some CSS. Using this website as example, you need to
+extend the minima theme. All you need to do is to create a file called
+<a href="https://github.com/gouravkhunger/jekyll-url-metadata/blob/main/example/_sass/minima/custom-styles.scss"><code class="language-plaintext highlighter-rouge">_sass/minima/custom-styles.scss</code></a>. If you use other Jekyll themes you must follow their documentation.</p>
+
+<p>Finally you need to add a couple of variables in the <code class="language-plaintext highlighter-rouge">_config.yml</code> file. These
+are required and will truncate the title and the description to the desired
+number of characters.</p>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">link_preview</span><span class="pi">:</span>
+  <span class="na">title_max_characters</span><span class="pi">:</span> <span class="m">64</span>
+  <span class="na">description_max_characters</span><span class="pi">:</span> <span class="m">128</span>
+</code></pre></div></div>
+
+<p>To use this example you just need to include the <code class="language-plaintext highlighter-rouge">link_preview.html</code> file with
+a <code class="language-plaintext highlighter-rouge">url</code> parameter, like this:</p>
+
+<div class="language-liquid highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">{%</span><span class="w"> </span><span class="nt">include</span><span class="w"> </span>link_preview.html<span class="w"> </span><span class="na">url</span><span class="o">=</span><span class="s2">"https://genicsblog.com/gouravkhunger/pagination-in-android-room-database-using-the-paging-3-library"</span><span class="w"> </span><span class="cp">%}</span>
+</code></pre></div></div>
+
       </div>
     </main><footer class="site-footer h-card">
   <data class="u-url" href="/"></data>
