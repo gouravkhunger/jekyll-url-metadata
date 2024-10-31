@@ -1,5 +1,10 @@
 # Jekyll::URLMetadata
 
+[![Gem Version](https://img.shields.io/gem/v/jekyll-url-metadata)][ruby-gems]
+[![Gem Total Downloads](https://img.shields.io/gem/dt/jekyll-url-metadata)][ruby-gems]
+
+[ruby-gems]: https://rubygems.org/gems/jekyll-url-metadata
+
 A jekyll plugin to extract meta information from urls and expose them to liquid variables.
 
 This gem was originally authored to be used as a custom plugin for the [static site](https://github.com/genicsblog/genicsblog.com) of [genicsblog.com](https://genicsblog.com)
