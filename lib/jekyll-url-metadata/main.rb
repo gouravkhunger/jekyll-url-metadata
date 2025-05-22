@@ -30,7 +30,7 @@ module Jekyll
       end
     end
 
-    def generate_hashmap(input, testCase = false)
+    def generate_hashmap(input)
       # parse HTML from URL
       begin
         doc = Nokogiri::HTML(URI.open(input, { 
@@ -38,7 +38,7 @@ module Jekyll
           :read_timeout => url_config["read_timeout"].nil? ? 1 : url_config["read_timeout"]
         }))
       rescue
-        log("Failed to parse HTML from '#{input}'. Please double check for URL validity.") if !testCase
+        log("Failed to parse HTML from '#{input}'. Please double check for URL validity.")
         return
       end
 
@@ -74,15 +74,15 @@ module Jekyll
       hash
     end
 
-    def is_input_valid(input, testCase = false)
+    def is_input_valid(input)
       if !input.is_a?(String)
-        log("Expected input type 'String'. Got '#{input.class}'.") if !testCase
+        log("Expected input type 'String'. Got '#{input.class}'.")
 
         return false
       end
 
       if input.nil? || input == ""
-        log("Empty input string.") if !testCase
+        log("Empty input string.")
 
         return false
       end
@@ -91,10 +91,10 @@ module Jekyll
         if URI.parse(input).kind_of?(URI::HTTP)
           return true
         else
-          log("'#{input}' does not seem to be a valid URL.") if !testCase
+          log("'#{input}' does not seem to be a valid URL.")
         end
       rescue
-        log("'#{input}' does not seem to be a valid URL.") if !testCase
+        log("'#{input}' does not seem to be a valid URL.")
       end
 
       false
@@ -125,6 +125,7 @@ module Jekyll
     end
 
     def log(msg)
+      return if Jekyll.env == "test"
       Jekyll.logger.error "URL Metadata:", msg
     end
 

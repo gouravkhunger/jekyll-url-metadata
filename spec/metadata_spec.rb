@@ -8,29 +8,27 @@ class InputValidatorTests
   describe "tests for input validation function" do
 
     it "should reject empty strings" do
-      assert_equal false, is_input_valid("", testCase = true)
+      assert_equal false, is_input_valid("")
     end
 
     it "should accept valid url strings" do
-      assert_equal true, is_input_valid("http://example.com", testCase = true)
+      assert_equal true, is_input_valid("http://example.com")
     end
 
     it "should accept valid url strings" do
-      assert_equal true, is_input_valid("https://gourav.sh", testCase = true)
+      assert_equal true, is_input_valid("https://gourav.sh")
     end
 
     it "should reject non-url strings" do
-      assert_equal false, is_input_valid("abc xyz", testCase = true)
+      assert_equal false, is_input_valid("abc xyz")
     end
 
     it "should reject non-string inputs" do
-      assert_equal false, is_input_valid(true, testCase = true)
+      assert_equal false, is_input_valid(true)
     end
 
     it "should reject non strings inputs" do
-      assert_equal false, is_input_valid({
-        "key" => "value"
-      }, testCase = true)
+      assert_equal false, is_input_valid({ "key" => "value" })
     end
 
   end
@@ -86,14 +84,14 @@ class HashValidationTests
   describe "tests to check for generated metadata hashmaps" do
 
     it "should return nil for invalid website" do
-      assert_nil generate_hashmap("https://-abc.com", testCase = true)
+      assert_nil generate_hashmap("https://-abc.com")
     end
 
     # Since websites change frequently, we will not test the content of the generated hashmap.
     # Instead we validate just the existence of the hashmap itself. 
 
     it "should not return nil for valid website" do
-      assert generate_hashmap("https://google.com", testCase = true) != nil
+      assert generate_hashmap("https://google.com") != nil
     end
 
   end
