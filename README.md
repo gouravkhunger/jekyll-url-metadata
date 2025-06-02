@@ -95,6 +95,14 @@ If you wish to purge the cache, simple delete the `Jekyll--URLMetadata` folder a
 See also the [example website](https://url-metadata.gourav.sh/) and
 [its source code](https://github.com/gouravkhunger/jekyll-url-metadata/tree/main/example).
 
+## Used by
+
+<a href="https://github.com/gouravkhunger/jekyll-url-metadata/network/dependents">
+  <img src="https://dependents.info/gouravkhunger/jekyll-url-metadata/image.svg" />
+</a>
+
+Made with [dependents.info](https://dependents.info).
+
 ## License
 
 The gem is available as open source under the terms of the [MIT License](https://github.com/gouravkhunger/jekyll-url-metadata/blob/main/LICENSE).
