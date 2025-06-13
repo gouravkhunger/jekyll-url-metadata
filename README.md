@@ -2,12 +2,20 @@
 
 [![Gem Version](https://img.shields.io/gem/v/jekyll-url-metadata)][ruby-gems]
 [![Gem Total Downloads](https://img.shields.io/gem/dt/jekyll-url-metadata)][ruby-gems]
+[![Gem Total Dependents](https://dependents.info/gouravkhunger/jekyll-url-metadata/badge)][dependents-info]
 
 [ruby-gems]: https://rubygems.org/gems/jekyll-url-metadata
+[dependents-info]: https://dependents.info/gouravkhunger/jekyll-url-metadata
 
 A jekyll plugin to extract meta information from urls and expose them to liquid variables.
 
 This gem was originally authored to be used as a custom plugin for the [static site](https://github.com/genicsblog/genicsblog.com) of [genicsblog.com](https://genicsblog.com)
+
+## Used by
+
+<a href="https://dependents.info/gouravkhunger/jekyll-url-metadata">
+  <img src="https://dependents.info/gouravkhunger/jekyll-url-metadata/image.svg" />
+</a>
 
 ## Installation
 
@@ -94,14 +102,6 @@ If you wish to purge the cache, simple delete the `Jekyll--URLMetadata` folder a
 
 See also the [example website](https://url-metadata.gourav.sh/) and
 [its source code](https://github.com/gouravkhunger/jekyll-url-metadata/tree/main/example).
-
-## Used by
-
-<a href="https://github.com/gouravkhunger/jekyll-url-metadata/network/dependents">
-  <img src="https://dependents.info/gouravkhunger/jekyll-url-metadata/image.svg" />
-</a>
-
-Made with [dependents.info](https://dependents.info).
 
 ## License
 
